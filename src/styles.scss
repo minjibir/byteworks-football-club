@@ -1,1 +1,20 @@
 /* You can add global styles to this file, and also import other style files */
+$theme-colors: ("primary": rgb(250, 180, 0), "dark": black);
+
+@import "../node_modules/bootswatch/dist/lux/variables";
+@import "../node_modules/bootstrap/scss/bootstrap.scss";
+@import "../node_modules/bootswatch/dist/lux/bootswatch";
+
+.nav-item {
+  margin: 0;
+}
+
+.topbar {
+  font-size: 10pt;
+  margin-top: .2rem;
+  margin-bottom: .3rem;
+}
+
+.bold {
+   font-weight: bolder;
+}
