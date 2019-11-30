@@ -1,20 +1,46 @@
 /* You can add global styles to this file, and also import other style files */
-$theme-colors: ("primary": rgb(250, 180, 0), "dark": black);
+$theme-colors: (
+  "primary": #fdc624,
+  "secondary": #2c2c36,
+  "dark": #2c2c36
+);
+
+$web-font-path: "https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap";
+$font-family-sans-serif: Poppins, "Nunito Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+  Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 
 @import "../node_modules/bootswatch/dist/lux/variables";
 @import "../node_modules/bootstrap/scss/bootstrap.scss";
 @import "../node_modules/bootswatch/dist/lux/bootswatch";
 
-.nav-item {
-  margin: 0;
+body {
+  color: #2c2c36;
 }
+$body-color: $secondary;
 
 .topbar {
-  font-size: 10pt;
-  margin-top: .2rem;
-  margin-bottom: .3rem;
+  font-size: 11px;
 }
 
-.bold {
-   font-weight: bolder;
+.navbar-light .nav-item {
+  margin: 0.3rem;
+}
+
+.navbar-light .navbar-nav .nav-link {
+  color: $dark;
+}
+
+.navbar-light .navbar-nav .nav-link:hover {
+  color: $primary;
+}
+
+.page-title {
+  background-image: url("./assets/img/title-bg.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.transparent {
+  background: linear-gradient(359.71deg, #ffffff -164.45%, rgba(255, 255, 255, 0) 17.36%), rgba(33, 35, 44, 0.9);
+  mix-blend-mode: normal;
 }
