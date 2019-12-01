@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MatchService } from '../services/match.service';
+import { StandingService } from '../services/standing.service';
 
 @Component({
   selector: 'app-home',
@@ -7,16 +7,35 @@ import { MatchService } from '../services/match.service';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+  standings: [];
+  tables: [];
+  index = 0;
 
-  constructor(private matchService: MatchService) { }
+  constructor(private standingService: StandingService) { }
 
   ngOnInit() {
-    this.matchService
-      .getMatches()
+    this.standingService
+      .getTable('CL')
       .subscribe(
-        res => console.table(res),
+        res => {
+           this.standings = res.standings;
+           this.tables = res.standings
+            .map(s => s.table.map(e => e))
+            .filter(t => t !== undefined);
+           this.tables.forEach(e => console.log(e));
+        },
         err => console.error(err.message, err)
       );
+
+
+  }
+
+  async getTables() {
+    // this.tables = await  
+  }
+
+  nextGroup(standing: any) {
+    this.index++;
   }
 
 }
