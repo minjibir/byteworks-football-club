@@ -46,4 +46,4 @@ testem.log
 Thumbs.db
 
 # Environment variables
-.env
+src/app/config/secretes.enum.ts

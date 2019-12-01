@@ -8,11 +8,11 @@ const url = UtilService.baseUrl;
 @Injectable({
   providedIn: 'root'
 })
-export class FixtureService {
+export class MatchService {
 
   constructor(private http: HttpClient) { }
 
-  getFixture(): Observable<any> {
-    return this.http.get(url);
+  getMatches(): Observable<any> {
+    return this.http.get(url + 'matches');
   }
 }
