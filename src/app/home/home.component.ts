@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { StandingService } from '../services/standing.service';
+import { Leagues } from '../enums/leagues.enum';
 
 @Component({
   selector: 'app-home',
@@ -7,35 +8,47 @@ import { StandingService } from '../services/standing.service';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  standings: [];
-  tables: [];
+  leagueCode = Leagues.champion;
+  result = null;
+  competition: any;
+  standing = null;
   index = 0;
 
   constructor(private standingService: StandingService) { }
 
   ngOnInit() {
+    this.changeLeague(this.leagueCode);
+  }
+
+  next(): void {
+    if (this.index < this.result.standings.length) {
+      this.standing = this.result.standings[++this.index];
+    }
+  }
+  prev(): void {
+    if (this.index > 0) {
+      this.standing = this.result.standings[--this.index];
+    }
+  }
+
+  changeLeague(leagueCode: Leagues) {
     this.standingService
-      .getTable('CL')
+      .getTable(this.leagueCode)
       .subscribe(
         res => {
-           this.standings = res.standings;
-           this.tables = res.standings
-            .map(s => s.table.map(e => e))
-            .filter(t => t !== undefined);
-           this.tables.forEach(e => console.log(e));
+          this.result = res;
+          this.competition = this.result.competition;
+          this.standing = this.result.standings[this.index]; console.log(this.standing);
         },
         err => console.error(err.message, err)
       );
-
-
   }
 
-  async getTables() {
-    // this.tables = await  
+  getGroup(group: string): string {
+    return group.split('_')[1];
   }
 
-  nextGroup(standing: any) {
-    this.index++;
+  getStage(stage: string): string {
+    return stage.replace('_', ' ');
   }
-
 }

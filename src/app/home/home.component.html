@@ -1,59 +1,62 @@
 <section class="page-title mb-5">
   <div class="jumbotron transparent">
     <div class="container">
-      <h1 class="h1 text-uppercase text-white font-weight-bold">Premier League</h1>
+      <h1 *ngIf="competition" class="h1 text-uppercase text-white font-weight-bold">{{competition.name}}</h1>
     </div>
   </div>
 </section>
 
 <div class="d-flex mb-5">
   <div class="container">
-    <table class="table table-borderless text-dark">
+
+    <div *ngIf="standing" class="d-flex justify-content-between">
+      <p *ngIf="standing.stage" class="lead font-weight-bold">Group: <span class="text-primary">{{getGroup(standing.group)}}</span></p>
+      <p *ngIf="standing.stage" class="lead font-weight-bold">Stage: <span class="text-primary">{{getStage(standing.stage)}}</span></p>
+    </div>
+
+    <table class="table table-borderless text-dark mb-5">
       <thead class="thead-light">
         <tr class="thead">
-          <th scope="col">#</th>
-          <th colspan="4" scope="col">Club</th>
-          <th scope="col">Played</th>
-          <th scope="col">Won</th>
-          <th scope="col">Drawn</th>
-          <th scope="col">Lost</th>
-          <th scope="col">GF</th>
-          <th scope="col">GA</th>
-          <th scope="col">GD</th>
-          <th scope="col">Points</th>
+          <th>#</th>
+          <th>Club</th>
+          <th class="text-right">P</th>
+          <th class="text-right">W</th>
+          <th class="text-right">D</th>
+          <th class="text-right">L</th>
+          <th class="text-right">GF</th>
+          <th class="text-right">GA</th>
+          <th class="text-right">GD</th>
+          <th class="text-right">Pts</th>
         </tr>
       </thead>
 
-      <tbody>
-        <!-- <tr *ngFor="let standing of standings; let i=index;"> -->
-        <tr *ngFor="let table of tables">
-        <td *ngIf="table" class="align-middle">{{table | json}}</td>
-        <!--
-          <td *ngIf="table" class="align-middle">{{table.position}}</td>
-          <td colspan="4" *ngIf="standing" class="align-middle">
+      <tbody *ngIf="standing && standing.table">
+        <tr *ngFor="let table of standing.table">
+          <td class="align-middle">{{table.position}}</td>
+          <td class="align-middle">
             <img class="img-fluid mr-3" width="30" src="{{table.team.crestUrl}}" alt="Logo">
             {{table.team.name}}
           </td>
-          <td *ngIf="table" class="align-middle">{{table.playedGames}}</td>
-          <td *ngIf="table" class="align-middle">{{table.won}}</td>
-          <td *ngIf="table" class="align-middle">{{table.draw}}</td>
-          <td *ngIf="table" class="align-middle">{{table.lost}}</td>
-          <td *ngIf="table" class="align-middle">{{table.goalsFor}}</td>
-          <td *ngIf="table" class="align-middle">{{table.goalsAgainst}}</td>
-          <td *ngIf="table" class="align-middle">{{table.goalDifference}}</td>
-          <td *ngIf="table" class="align-middle">{{table.points}}</td>
-          -->
+          <td class="align-middle text-right">{{table.playedGames}}</td>
+          <td class="align-middle text-right">{{table.won}}</td>
+          <td class="align-middle text-right">{{table.draw}}</td>
+          <td class="align-middle text-right">{{table.lost}}</td>
+          <td class="align-middle text-right">{{table.goalsFor}}</td>
+          <td class="align-middle text-right">{{table.goalsAgainst}}</td>
+          <td class="align-middle text-right">{{table.goalDifference}}</td>
+          <td class="align-middle text-right">{{table.points}}</td>
         </tr>
       </tbody>
     </table>
 
     <div class="d-flex justify-content-end">
       <div class="btn-group">
-        <button class="btn btn-primary mr-2 px-5">
+        <button class="btn btn-primary mr-2 px-5" (click)="prev()">
           <i class="fa fa-chevron-left"></i>
           <span class="ml-2 mr-auto">Prev</span>
         </button>
-        <button class="btn btn-primary ml-2 px-5">
+        <!-- disabled="index >= result.standings.length" -->
+        <button  class="btn btn-primary ml-2 px-5" (click)="next()">
           Next
           <i class="ml-2 fa fa-chevron-right mr-auto"></i>
         </button>
