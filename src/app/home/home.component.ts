@@ -38,7 +38,7 @@ export class HomeComponent implements OnInit {
         res => {
           this.result = res;
           this.competition = this.result.competition;
-          this.standing = this.result.standings[this.index]; console.log(this.standing);
+          this.standing = this.result.standings[this.index];
         },
         err => console.error(err.message, err)
       );
