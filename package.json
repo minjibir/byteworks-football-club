@@ -5,11 +5,11 @@
     "ng": "ng",
     "start": "node server.js",
     "dev": "ng serve",
-    "build": "ng build",
+    "build": "ng build --aot --prod --output-hashing=none",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "postinstall": "ng build --aot --prod",
+    "postinstall": "ng build --aot --prod --output-hashing=none",
     "deploy": "git checkout master && git merge dev && git push -u origin master && git push heroku master && git checkout dev"
   },
   "private": true,
@@ -51,8 +51,8 @@
     "typescript": "~3.5.3"
   },
   "engines": {
-    "node": "~10.15.1",
-    "npm": "~6.12.0"
+    "node": "~13.3.0",
+    "npm": "~6.13.2"
   },
   "keywords": [
     "byte works football",
