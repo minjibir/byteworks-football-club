@@ -5,7 +5,7 @@ import {
   HttpRequest,
   HttpEvent
 } from '@angular/common/http';
-import { Secretes } from '../config/secretes.enum';
+import { Util } from '../utils/util.enum';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -17,7 +17,7 @@ export class ApiKeyInterceptorService implements HttpInterceptor {
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     return next.handle(req.clone({
-      headers: req.headers.set('X-Auth-Token', Secretes.API_KEY)
+      headers: req.headers.set('X-Auth-Token', Util.API_KEY)
     }));
   }
 }

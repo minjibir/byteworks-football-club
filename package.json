@@ -51,17 +51,17 @@
     "typescript": "~3.5.3"
   },
   "engines": {
-      "node": "~10.15.1",
-      "npm": "~6.12.0"
+    "node": "~10.15.1",
+    "npm": "~6.12.0"
   },
   "keywords": [
-      "byte works football",
-      "football fixtures",
-      "premier league",
-      "champion league",
-      "matches",
-      "scores",
-      "leage table"
+    "byte works football",
+    "football fixtures",
+    "premier league",
+    "champion league",
+    "matches",
+    "scores",
+    "leage table"
   ],
   "author": "Jabir S. Minjibir"
 }

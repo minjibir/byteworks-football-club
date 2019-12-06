@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Secretes } from '../config/secretes.enum';
+import { Util } from '../utils/util.enum';
 
-const url = Secretes.BASE_URL;
+const url = Util.BASE_URL;
 
 @Injectable({
   providedIn: 'root'
