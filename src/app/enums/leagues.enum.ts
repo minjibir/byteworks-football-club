@@ -1,5 +1,7 @@
 export enum Leagues {
+   worldCup = 'WC',
    champion = 'CL',
    premier = 'PL',
-   laliga = 'LG'
+   laliga = 'PD',
+   Bundesliga = 'BL1'
 }

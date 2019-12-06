@@ -9,9 +9,9 @@ import { Leagues } from '../enums/leagues.enum';
 })
 export class HomeComponent implements OnInit {
   leagueCode = Leagues.champion;
-  result = null;
+  result: any;
   competition: any;
-  standing = null;
+  standing: any;
   index = 0;
 
   constructor(private standingService: StandingService) { }
@@ -31,9 +31,9 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  changeLeague(leagueCode: Leagues) {
+  async changeLeague(leagueCode: Leagues) {
     this.standingService
-      .getTable(this.leagueCode)
+      .getTable(leagueCode)
       .subscribe(
         res => {
           this.result = res;
@@ -45,7 +45,9 @@ export class HomeComponent implements OnInit {
   }
 
   getGroup(group: string): string {
-    return group.split('_')[1];
+    if(group) {
+      return group.split('_')[1];
+    }
   }
 
   getStage(stage: string): string {
