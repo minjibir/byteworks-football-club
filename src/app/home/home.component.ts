@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { StandingService } from '../services/standing.service';
-import { Leagues } from '../enums/leagues.enum';
 
 @Component({
   selector: 'app-home',
@@ -8,7 +7,7 @@ import { Leagues } from '../enums/leagues.enum';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  leagueCode = Leagues.champion;
+  leagueCode = 'CL';
   result: any;
   competition: any;
   standing: any;
@@ -31,7 +30,7 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  async changeLeague(leagueCode: Leagues) {
+  async changeLeague(leagueCode: string) {
     this.standingService
       .getTable(leagueCode)
       .subscribe(

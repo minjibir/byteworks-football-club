@@ -3,11 +3,14 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "node server.js",
+    "dev": "ng serve",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "postinstall": "ng build --aot --prod",
+    "deploy": "git checkout master && git merge dev && git push -u origin master && git push heroku master && git checkout dev"
   },
   "private": true,
   "dependencies": {
@@ -21,6 +24,7 @@
     "@angular/router": "~8.2.9",
     "bootstrap": "^4.4.1",
     "bootswatch": "^4.4.0",
+    "express": "^4.17.1",
     "rxjs": "~6.4.0",
     "tslib": "^1.10.0",
     "zone.js": "~0.9.1"
@@ -45,5 +49,19 @@
     "ts-node": "~7.0.0",
     "tslint": "~5.15.0",
     "typescript": "~3.5.3"
-  }
+  },
+  "engines": {
+      "node": "~10.15.1",
+      "npm": "~6.12.0"
+  },
+  "keywords": [
+      "byte works football",
+      "football fixtures",
+      "premier league",
+      "champion league",
+      "matches",
+      "scores",
+      "leage table"
+  ],
+  "author": "Jabir S. Minjibir"
 }
